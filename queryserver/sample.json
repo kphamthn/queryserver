@@ -1,0 +1,85 @@
+[
+    "ddoc",
+    "_design/validation",
+    [
+        "validate_doc_update"
+    ],
+    [
+        {
+            "_id": "0QirZbzKduiVzJLB",
+            "_rev": "10-a1bfe189d8a53fcb6f6400340e3589be",
+            "title": "Hello World2!",
+            "description": "Hello World Challenge",
+            "competition_mode": "pvp",
+            "play_category": "selfChallenging",
+            "target": "distance",
+            "max_players": 100,
+            "difficulty": "veryEasy",
+            "custom": [],
+            "start": 0,
+            "end": 1519117170303,
+            "completed": 0,
+            "image": "https://adh.rapidnet.de/media/267be49570de9fe27911.jpg",
+            "type": "challenge",
+            "master": "0QireCLPlMGxCUNl",
+            "transfered_from": "0irVMHhFSNrLSEZ0",
+            "_revisions": {
+                "start": 10,
+                "ids": [
+                    "a1bfe189d8a53fcb6f6400340e3589be"
+                ]
+            }
+        },
+        {
+            "_id": "0QirZbzKduiVzJLB",
+            "_rev": "10-a1bfe189d8a53fcb6f6400340e3589be",
+            "title": "Hello World!",
+            "description": "Hello World Challenge",
+            "competition_mode": "pvp",
+            "play_category": "selfChallenging",
+            "target": "distance",
+            "max_players": 100,
+            "difficulty": "veryEasy",
+            "custom": [],
+            "start": 0,
+            "end": 1519117170303,
+            "completed": 0,
+            "image": "https://adh.rapidnet.de/media/267be49570de9fe27911.jpg",
+            "type": "challenge",
+            "master": "0QireCLPlMGxCUNl",
+            "transfered_from": "0irVMHhFSNrLSEZ0",
+            "_revisions": {
+                "start": 10,
+                "ids": [
+                    "a1bfe189d8a53fcb6f6400340e3589be",
+                    "4c2f4471eb136dcf53703a680bfe8d47",
+                    "af4aa1de6bb00879e3e75bd1aa0e1f6c",
+                    "1979731d278a12c687be9daf745e98bc",
+                    "e51f4dd1ddde155c2f0fcc45cca7a7d1",
+                    "fe8a77036383d2fa209004bfe163baf9",
+                    "6a3040e1d777daf1fb8a5577fa1e8a2c",
+                    "33e05677506096f995813abc6ac367d7",
+                    "c406d2fe02744cf3b15553f0c2e14168",
+                    "21768685c97c48e19468ef5b51356ac0"
+                ]
+            }
+        },
+        {
+            "db": "all_day_hero",
+            "name": "admin",
+            "roles": [
+                "_admin"
+            ]
+        },
+        {
+            "members": {
+                "roles": [
+                    "player"
+                ]
+            },
+            "admins": {
+                "names": []
+            }
+        }
+    ]
+]
