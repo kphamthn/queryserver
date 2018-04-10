@@ -28,11 +28,6 @@ var (
 func main() {
 	initCustomValidation()
 	govalidator.SetFieldsRequiredByDefault(true)
-	_, err := govalidator.ValidateStruct(&Message{"", "", "", "text", true})
-	if err != nil {
-		println(err.Error())
-	}
-
 	for {
 		data, err := stdin.ReadBytes('\n')
 		if err == io.EOF {
@@ -155,10 +150,12 @@ func validate(newDoc gjson.Result, oldDoc gjson.Result, userCtx gjson.Result, se
 	}
 	switch newDocType.String() {
 	case "player":
-
+		return validatePlayer(newDoc)
 	case "friendship":
 	case "message":
+		return validateMessage(newDoc)
 	case "challenge":
+		return validateChallenge(newDoc)
 	case "join":
 	case "post":
 	case "comment":
