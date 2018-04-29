@@ -26,6 +26,7 @@ var (
 )
 
 func main() {
+	fmt.Println(checkIfObjectExists("0irVMHhFrLSEZ0"))
 	initCustomValidation()
 	govalidator.SetFieldsRequiredByDefault(true)
 	for {
@@ -127,6 +128,27 @@ func couchRequest(path string) gjson.Result {
 		return gjson.Parse("[]")
 	}
 	return gjson.ParseBytes(res.Body())
+}
+
+func checkIfObjectExists(objectID string) bool {
+	req := fasthttp.AcquireRequest()
+	req.SetRequestURI(fmt.Sprintf("https://adh.rapidnet.de:6984/all_day_hero/%s", objectID))
+	req.Header.Add("Authorization", "Basic YWRtaW46SWd1bUNhdDU=")
+	res := fasthttp.AcquireResponse()
+	err := fasthttp.DoTimeout(req, res, time.Second*2)
+	if err != nil {
+		log("Error getting object: %s", err.Error())
+		return false
+	}
+	object := gjson.ParseBytes(res.Body())
+	if object.Get("error").String() == "not_found" {
+		return false
+	}
+	return true
+}
+
+func getUserID(username string) string {
+
 }
 
 func validate(newDoc gjson.Result, oldDoc gjson.Result, userCtx gjson.Result, security gjson.Result) []byte {

@@ -5,7 +5,7 @@ import "github.com/asaskevich/govalidator"
 func initCustomValidation() {
 	govalidator.TagMap["messagetype"] = govalidator.Validator(func(messagetype string) bool {
 		println("Jello")
-		return messagetype == "text"
+		return false
 	})
 
 	govalidator.TagMap["competitionmode"] = govalidator.Validator(func(cm string) bool {

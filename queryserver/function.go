@@ -39,5 +39,24 @@ func validateChallenge(challenge gjson.Result) []byte {
 	if err != nil {
 		return statusForbidden(err.Error())
 	}
+
+	if checkIfObjectExists(challenge.Get("Master").String()) {
+		return statusForbidden("Player's Id not found!")
+	}
+
+	return statusValid()
+}
+
+func validateFriendship(friendship gjson.Result) []byte {
+
+	_, err := govalidator.ValidateStruct(&Friendship{friendship.Get("title").String(),
+		friendship.Get("description").String(), friendship.Get("competitionmode").String(),
+		friendship.Get("playcategory").String(), friendship.Get("target").String(),
+		friendship.Get("maxplayer").Int(), friendship.Get("start").Int(),
+		friendship.Get("end").Int(), friendship.Get("completed").Int(),
+		friendship.Get("Image").String(), friendship.Get("Master").String()})
+	if err != nil {
+		return statusForbidden(err.Error())
+	}
 	return statusValid()
 }
