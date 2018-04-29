@@ -11,7 +11,7 @@ Some examples (only my suggestion):
 - A normal user can change his profile but not others'.
 - A master can edit his own challenge as well as all posts and comments in it. He can also ban players from it.
 - A banned player can not post, comment and rate anything in that challenge.
-etc.
+- etc.
 
 And there must be some challenges that are hidden from others (that means only certain players can get access to it). 
 
