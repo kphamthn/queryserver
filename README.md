@@ -15,7 +15,7 @@ Some examples (only my suggestion):
 
 And there must be some challenges that are hidden from others (that means only certain players can get access to it). 
 
-Did our customers already have a guideline for that, or are they still open?
+Did our customers already have a guideline for those, or are they still open?
 
 
 ## Already cover
