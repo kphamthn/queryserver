@@ -22,6 +22,7 @@ var (
 	regexDocumentID    = regexp.MustCompile("^[A-Za-z0-9]{16}$")
 	base62charSet      = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 	timestampTolerance = int64(1000 * 60 * 5)
+	playerid           = ""
 )
 
 func main() {
@@ -114,6 +115,23 @@ func checkTime(timestamp int64) bool {
 	return timestamp >= now-timestampTolerance && timestamp <= now+timestampTolerance
 }
 
+func checkIfBanned(playerid string, challengeid string) bool {
+	req := fasthttp.AcquireRequest()
+	req.SetRequestURI(fmt.Sprintf("https://adh.rapidnet.de:6984/all_day_hero/_design/join/_view/by-challenge-player-fetch?key=[\"%s\",\"%s\"]", challengeid, playerid))
+	req.Header.Add("Authorization", "Basic YWRtaW46SWd1bUNhdDU=")
+	res := fasthttp.AcquireResponse()
+	err := fasthttp.DoTimeout(req, res, time.Second*2)
+	if err != nil {
+		log("Error getting object: %s", err.Error())
+		return false
+	}
+	object := gjson.ParseBytes(res.Body())
+	if object.Get("ban").Bool() {
+		return true
+	}
+	return false
+}
+
 func couchRequest(path string) gjson.Result {
 	req := fasthttp.AcquireRequest()
 	req.SetRequestURI(fmt.Sprintf("http://127.0.0.1:5984%s", path))
@@ -165,7 +183,9 @@ func validate(newDoc gjson.Result, oldDoc gjson.Result, userCtx gjson.Result, se
 
 	player := couchRequest(fmt.Sprintf("/_users/org.couchdb.user:%s", userCtx.Get("name").String()))
 
-	if !regexDocumentID.MatchString(player.Get("player_id").String()) {
+	playerid = player.Get("player_id").String()
+
+	if !regexDocumentID.MatchString(playerid) {
 		return statusForbidden("Authorized user does not have a PLAYERID")
 	}
 

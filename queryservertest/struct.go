@@ -1,12 +1,15 @@
 package main
 
-
 type Player struct {
 	Name  string `valid:"utfletternum, length(0|10)"`
 	Email string `valid:"email"`
 	Image string `valid:"url"`
 }
 
+type User struct {
+	Id       string
+	Username string
+}
 
 type Message struct {
 	Message     string `valid:"ascii"`
