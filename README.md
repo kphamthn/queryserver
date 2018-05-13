@@ -1,24 +1,17 @@
 # queryserver
 
-## Need to know
+## 
 
-The queryserver works each time I post new documents. But what will happen when we want to update the old 
-documents? It has much to do with the right of access, which is not very clear to me right now.
-
-Some examples (only my suggestion):
-
-- Basically an admin can update all documents.
-- A normal user can change his profile but not others'.
-- A master can edit his own challenge as well as all posts and comments in it. He can also ban players from it.
-- A banned player can not post, comment and rate anything in that challenge.
-- etc.
-
-And there must be some challenges that are hidden from others (that means only certain players can get access to it). 
-
-Did our customers already have a guideline for those, or are they still open?
 
 
 ## Already cover
+
+### Right of access
+
+- Only a challenge's master can ban/unban players from that challenge and update that challenge.
+- Only two players who have a friendship with each other can delete that friendship.
+- Players can only change their own post/comment/rating/profile.
+- Banned player can not do anything in a challenge and also can not change what they have posted.
 
 ### Challenge
 * Title and description can contain ascii characters.
