@@ -11,6 +11,8 @@ import (
 	"strings"
 	"time"
 
+	"couchconnector"
+
 	"github.com/tidwall/gjson"
 	"github.com/valyala/fasthttp"
 )
@@ -27,6 +29,10 @@ var (
 
 func main() {
 	initCustomValidation()
+	couchconnector.InitDatabase("https://adh.rapidnet.de:6984", "all_day_hero", "admin", "IgumCat5")
+	player, _ := couchconnector.GetViewBySingleKey("player", "by-friendship", "nnn")
+	arr := player.Get("rows").Array()
+	fmt.Println(len(arr))
 	for {
 		data, err := stdin.ReadBytes('\n')
 		if err == io.EOF {
